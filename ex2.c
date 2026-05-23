@@ -1,37 +1,39 @@
 #include <stdio.h>
 
 void encontrarMaiorMenor(int *array, int tamanho, int *maior, int *menor) {
-    int i;
+    *maior = *array;
+    *menor = *array;
 
-    *maior = array[0];
-    *menor = array[0];
-
-    for(i = 1; i < tamanho; i++) {
-        if(array[i] > *maior) {
-            *maior = array[i];
+    for (int i = 1; i < tamanho; i++) {
+        // *(array + i) acessa a posição do vetor usando aritmética de ponteiros
+        if (*(array + i) > *maior) {
+            *maior = *(array + i);
         }
-
-        if(array[i] < *menor) {
-            *menor = array[i];
+        if (*(array + i) < *menor) {
+            *menor = *(array + i);
         }
     }
 }
 
 int main() {
-    int numeros[5];
-    int maior, menor;
-    int i;
+    int tamanho;
 
-    printf("Digite 5 numeros:\n");
+    printf("Digite o tamanho do array: ");
+    scanf("%d", &tamanho);
 
-    for(i = 0; i < 5; i++) {
-        scanf("%d", &numeros[i]);
+    int vetor[tamanho];
+    for (int i = 0; i < tamanho; i++) {
+        printf("Digite o elemento %d: ", i + 1);
+        scanf("%d", &vetor[i]);
     }
 
-    encontrarMaiorMenor(numeros, 5, &maior, &menor);
+    int maiorElemento, menorElemento;
 
-    printf("\nMaior numero: %d\n", maior);
-    printf("Menor numero: %d\n", menor);
+    // Passa o array e os endereços das variáveis que vão guardar o resultado
+    encontrarMaiorMenor(vetor, tamanho, &maiorElemento, &menorElemento);
+
+    printf("\nMaior: %d\n", maiorElemento);
+    printf("Menor: %d\n", menorElemento);
 
     return 0;
 }
