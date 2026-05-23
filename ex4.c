@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void dobrar(int *numero) {
+   //altera o valor na memoria usando o operador
     *numero = (*numero) * 2;
 }
 
