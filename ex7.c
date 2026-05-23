@@ -3,9 +3,11 @@
 
 void inverterString(char *str) {
     char *inicio = str;
-    char *fim = str + strlen(str) - 1;
+    // Aritmética de ponteiros: posiciona o ponteiro 'fim' exatamente no último caractere válido
+    char *fim = str + strlen(str) - 1; 
     char temp;
 
+    // Inversão in-place que ocorre até os ponteiros se cruzarem na memória
     while(inicio < fim) {
         temp = *inicio;
         *inicio = *fim;
@@ -20,7 +22,8 @@ int main() {
     char texto[100];
 
     printf("Digite uma palavra: ");
-    gets(texto);
+    // Lê a string sem os problemas de segurança do gets
+    scanf("%s", texto);
 
     inverterString(texto);
 
