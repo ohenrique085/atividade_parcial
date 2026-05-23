@@ -1,31 +1,25 @@
 #include <stdio.h>
 
 void trocarValores(int *a, int *b) {
-    int temp;
-
-    temp = *a;
+    int aux = *a;
     *a = *b;
-    *b = temp;
+    *b = aux;
 }
 
 int main() {
     int num1, num2;
 
-    printf("Digite o primeiro numero: ");
+    printf("Digite o primeiro valor: ");
     scanf("%d", &num1);
-
-    printf("Digite o segundo numero: ");
+    printf("Digite o segundo valor: ");
     scanf("%d", &num2);
 
-    printf("\nValores antes da troca:\n");
-    printf("num1 = %d\n", num1);
-    printf("num2 = %d\n", num2);
+    printf("\nAntes da troca: num1 = %d, num2 = %d\n", num1, num2);
 
+    // Passa os endereços (&) para a função alterar as variáveis originais
     trocarValores(&num1, &num2);
 
-    printf("\nValores depois da troca:\n");
-    printf("num1 = %d\n", num1);
-    printf("num2 = %d\n", num2);
+    printf("Depois da troca: num1 = %d, num2 = %d\n", num1, num2);
 
     return 0;
 }
